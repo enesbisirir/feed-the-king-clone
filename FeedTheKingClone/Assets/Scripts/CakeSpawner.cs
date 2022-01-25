@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class CakeSpawner : MonoBehaviour
 {
-
     [SerializeField]
     private float spawnTimer;
 
     [SerializeField]
-    private GameObject[] cakes;
+    private GameObject[] cakePrefabs;
+
+    private GameObject lastCakeSpawned;
+    private static List<GameObject> cakesSpawned = new List<GameObject>();
 
     void Start()
     {
-        StartCoroutine(SpawnCake());
+        StartCoroutine(SpawnCake(spawnTimer));
     }
 
-    private IEnumerator SpawnCake()
+    private IEnumerator SpawnCake(float spawnTimer)
     {
         while (true)
         {
-            Instantiate(SelectCake(), transform.position, Quaternion.identity);
+            lastCakeSpawned = Instantiate(SelectCake(), transform.position, Quaternion.identity);
+
+            cakesSpawned.Add(lastCakeSpawned);
             yield return new WaitForSeconds(spawnTimer);
         }
     }
@@ -28,7 +32,11 @@ public class CakeSpawner : MonoBehaviour
     //TODO: Select cakes based on time passed
     private GameObject SelectCake()
     {
-        int cakeIndex = Random.Range(0, cakes.Length);
-        return cakes[cakeIndex];
+        int cakeIndex = Random.Range(0, cakePrefabs.Length);
+        return cakePrefabs[cakeIndex];
     }
+
+    public static List<GameObject> GetCakesSpawned(){
+        return cakesSpawned;
+        }
 }
