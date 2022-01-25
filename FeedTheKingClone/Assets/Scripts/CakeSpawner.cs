@@ -11,33 +11,21 @@ public class CakeSpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] cakes;
 
-    private GameObject lastRespawnedCake;
-
-
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnCake());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private IEnumerator SpawnCake()
     {
         while (true)
         {
-            lastRespawnedCake = Instantiate(SelectCake(), transform.position, Quaternion.identity);
-
-            // lastRespawnedCake.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -1);
-
+            Instantiate(SelectCake(), transform.position, Quaternion.identity);
             yield return new WaitForSeconds(spawnTimer);
         }
     }
 
+    //TODO: Select cakes based on time passed
     private GameObject SelectCake()
     {
         int cakeIndex = Random.Range(0, cakes.Length);
