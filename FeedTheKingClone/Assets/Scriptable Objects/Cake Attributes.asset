@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46600eedba511be4b8cb5f53908808bc, type: 3}
   m_Name: Cake Attributes
   m_EditorClassIdentifier: 
-  fallingSpeed: 3
-  horizontalSpeed: 6
+  fallingSpeed: 10
+  horizontalSpeed: 3
