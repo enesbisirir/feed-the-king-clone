@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1575309112996611012}
   - component: {fileID: 1502648649}
   - component: {fileID: 8256037560850162394}
+  - component: {fileID: 1928896395858586323}
   m_Layer: 0
   m_Name: Cake 2
   m_TagString: Cake
@@ -142,3 +143,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1928896395858586323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720808869896070544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f49bdad8f5de14684d814ae6020851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
