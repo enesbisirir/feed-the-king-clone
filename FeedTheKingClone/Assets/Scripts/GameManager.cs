@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    
     void Start()
     {
         CakeSpawner.Instance.Spawn();
+        Cake.CurrentCake.OnFell += CakeSpawner.Instance.Spawn;
     }
 
     void Update()
