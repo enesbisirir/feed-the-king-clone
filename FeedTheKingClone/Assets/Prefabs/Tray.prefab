@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7476364444608724572}
   - component: {fileID: 2802751791261067500}
   - component: {fileID: 3806908238844306143}
+  - component: {fileID: -9171647652676197398}
   m_Layer: 0
   m_Name: Tray
   m_TagString: Tray
@@ -131,3 +132,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-9171647652676197398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476364444608724573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c81f6c84b83d2458a879bcfb1ef6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
