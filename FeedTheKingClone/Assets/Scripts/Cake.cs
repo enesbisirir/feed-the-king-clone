@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Cake : MonoBehaviour
 {
-    // TODO: Use scriptable object?
-    [SerializeField] private float horizontalSpeed = 1f;
-    [SerializeField] private float fallingSpeed;
+    [SerializeField] private CakeAttributes cakeAttributes;
 
     private Rigidbody2D rigidbody2d;
 
@@ -17,16 +15,16 @@ public class Cake : MonoBehaviour
         CurrentCake = this;
         rigidbody2d = GetComponent<Rigidbody2D>();
 
-        rigidbody2d.velocity = new Vector2(1,0) * horizontalSpeed;
+        rigidbody2d.velocity = new Vector2(1,0) * cakeAttributes.HorizontalSpeed;
     }
 
     public void Stop()
     {
-        rigidbody2d.velocity = new Vector2(-1, 0) * horizontalSpeed;
+        rigidbody2d.velocity = new Vector2(-1, 0) * cakeAttributes.HorizontalSpeed;
     }
 
     public void Fall()
     {
-        rigidbody2d.velocity = new Vector2(0, -1) * fallingSpeed;
+        rigidbody2d.velocity = new Vector2(0, -1) * cakeAttributes.FallingSpeed;
     }
 }

@@ -153,3 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 3
   fallingSpeed: 10
+  cakeAttributes: {fileID: 11400000, guid: 68d14f2452036e0429f210386a4bb278, type: 2}
