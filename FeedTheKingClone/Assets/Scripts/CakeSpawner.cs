@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class CakeSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private float spawnTimer;
-
-    [SerializeField]
-    private GameObject[] cakePrefabs;
+    [SerializeField] private GameObject[] cakePrefabs;
 
     public static CakeSpawner Instance;
 
