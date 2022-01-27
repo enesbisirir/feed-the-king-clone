@@ -8,4 +8,14 @@ public class GameManager : MonoBehaviour
     {
         CakeSpawner.Instance.Spawn();
     }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Cake.CurrentCake.Stop();
+            Cake.CurrentCake.Fall();
+        }
+
+    }
 }
