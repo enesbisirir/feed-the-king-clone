@@ -10,18 +10,16 @@ public class CakeSpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] cakePrefabs;
 
-    void Start()
+    public static CakeSpawner Instance;
+
+    void OnEnable()
     {
-        StartCoroutine(SpawnCake(spawnTimer));
+        Instance = this;
     }
 
-    private IEnumerator SpawnCake(float spawnTimer)
+    public void Spawn()
     {
-        while (true)
-        {
-            Instantiate(SelectCake(), transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(spawnTimer);
-        }
+        Instantiate(SelectCake(), transform.position, Quaternion.identity);
     }
 
     //TODO: Select cakes to spawn based on time passed
