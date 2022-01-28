@@ -21,11 +21,6 @@ public class Cake : MonoBehaviour
         rigidbody2d.velocity = new Vector2(1, 0) * cakeAttributes.HorizontalSpeed;
     }
 
-    public void Stop()
-    {
-        rigidbody2d.velocity = new Vector2(-1, 0) * cakeAttributes.HorizontalSpeed;
-    }
-
     public void Fall()
     {
         rigidbody2d.velocity = new Vector2(0, -1) * cakeAttributes.FallingSpeed;

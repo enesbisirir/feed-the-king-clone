@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Cake.CurrentCake.Stop();
             Cake.CurrentCake.Fall();
         }
 
