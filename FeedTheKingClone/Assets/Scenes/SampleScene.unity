@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ea435dc630b8d478d46e80b2f14f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cakeSpawner: {fileID: 1319143939}
 --- !u!4 &1169267696
 Transform:
   m_ObjectHideFlags: 0
