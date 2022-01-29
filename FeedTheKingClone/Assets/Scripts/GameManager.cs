@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+    [SerializeField] private CakeSpawner cakeSpawner;
+
     void Start()
     {
-        CakeSpawner.Instance.Spawn();
-        Cake.CurrentCake.OnFell += CakeSpawner.Instance.Spawn;
+        cakeSpawner.Spawn();
+        CakeCollection.CurrentCake.OnFell += cakeSpawner.Spawn;
+        CakeCollection.Cakes.Changed += OnCakesChanged;
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Cake.CurrentCake.Fall();
+            CakeCollection.CurrentCake.Fall();
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("Current cake: " + CakeCollection.CurrentCake.name);
+            //Debug.Log("Previous cake: " + CakeCollection.Cakes.GetPreviousCake().name);
+        }
+    }
 
+    private void OnCakesChanged()
+    {
+        CakeCollection.CurrentCake.OnFell += cakeSpawner.Spawn;
     }
 }

@@ -6,13 +6,6 @@ public class CakeSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] cakePrefabs;
 
-    public static CakeSpawner Instance;
-
-    void OnEnable()
-    {
-        Instance = this;
-    }
-
     public void Spawn()
     {
         Instantiate(SelectCake(), transform.position, Quaternion.identity);
