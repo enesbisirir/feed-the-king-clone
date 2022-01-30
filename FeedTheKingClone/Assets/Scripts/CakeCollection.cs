@@ -8,26 +8,32 @@ public class CakeCollection
     private List<Cake> cakes = new List<Cake>();
 
     public static CakeCollection Cakes = new CakeCollection();
-    public static Cake CurrentCake;
+
+    private Cake currentCake;
+    private Cake previousCake;
 
     public event Action Changed;
 
     public void Add(Cake cake)
     {
         cakes.Add(cake);
-        CurrentCake = cake;
+
+        if (currentCake != null)
+        {
+            previousCake = currentCake;
+        }
+        currentCake = cake;
+
         Changed?.Invoke();
     }
 
-    public Cake GetPreviousCake()
+    public Cake CurrentCake()
     {
-        if (cakes.Count <= 1)
-        {
-            return null;
-        }
-        else
-        {
-            return cakes[cakes.Count - 2];
-        }
+        return currentCake;
+    }
+
+    public Cake PreviousCake()
+    {
+        return previousCake;
     }
 }
