@@ -6,6 +6,10 @@ using UnityEngine;
 public class Cake : MonoBehaviour
 {
     [SerializeField] private CakeAttributes cakeAttributes;
+    [SerializeField] private GameObject topLeftCorner;
+    [SerializeField] private GameObject topRightCorner;
+    [SerializeField] private GameObject bottomLeftCorner;
+    [SerializeField] private GameObject bottomRightCorner;
 
     private Rigidbody2D rigidbody2d;
 
