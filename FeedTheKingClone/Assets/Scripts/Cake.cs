@@ -9,7 +9,7 @@ public class Cake : MonoBehaviour
 
     private Rigidbody2D rigidbody2d;
 
-    public Action OnFell { get; internal set; }
+    public Action Fell { get; internal set; }
 
     void OnEnable()
     {
@@ -37,7 +37,7 @@ public class Cake : MonoBehaviour
             if (collision.gameObject.TryGetComponent<Tray>(out Tray tray) ||
                 collision.gameObject.TryGetComponent<Cake>(out Cake cake))
             {
-                OnFell?.Invoke();
+                Fell?.Invoke();
                 rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
             }
         }
