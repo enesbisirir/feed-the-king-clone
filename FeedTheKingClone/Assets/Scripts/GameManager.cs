@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         cakeSpawner.Spawn();
-        CakeCollection.Cakes.CurrentCake().Fell += cakeSpawner.Spawn;
+        CakeCollection.Cakes.CurrentCake().Fallen += cakeSpawner.Spawn;
         CakeCollection.Cakes.Changed += OnCakesChanged;
     }
 
@@ -23,6 +23,6 @@ public class GameManager : MonoBehaviour
 
     private void OnCakesChanged()
     {
-        CakeCollection.Cakes.CurrentCake().Fell += cakeSpawner.Spawn;
+        CakeCollection.Cakes.CurrentCake().Fallen += cakeSpawner.Spawn;
     }
 }

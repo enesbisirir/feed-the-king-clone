@@ -13,7 +13,7 @@ public class Cake : MonoBehaviour
 
     private Rigidbody2D rigidbody2d;
 
-    public Action Fell { get; internal set; }
+    public Action Fallen { get; internal set; }
 
     void OnEnable()
     {
@@ -27,7 +27,7 @@ public class Cake : MonoBehaviour
     {
         if (this == CakeCollection.Cakes.CurrentCake() && !collision.gameObject.CompareTag("Wall"))
         {
-            Fell?.Invoke();
+            Fallen?.Invoke();
             rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
