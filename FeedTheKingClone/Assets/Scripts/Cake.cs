@@ -23,6 +23,16 @@ public class Cake : MonoBehaviour
         MoveHorizontally();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (this == CakeCollection.Cakes.CurrentCake() && !collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("collided");
+            Fell?.Invoke();
+            rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+    }
+
     private void MoveHorizontally()
     {
         int randomDirection = UnityEngine.Random.Range(0, 2) * 2 - 1;
@@ -32,15 +42,5 @@ public class Cake : MonoBehaviour
     public void Fall()
     {
         rigidbody2d.velocity = new Vector2(0, -1) * cakeAttributes.FallingSpeed;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (this == CakeCollection.Cakes.CurrentCake() && !collision.gameObject.CompareTag("Wall"))
-        {
-            Debug.Log("collided");
-            Fell?.Invoke();
-            rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
     }
 }
