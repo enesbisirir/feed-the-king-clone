@@ -36,14 +36,11 @@ public class Cake : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (transform.position.y > collision.gameObject.transform.position.y)
+        if (this == CakeCollection.Cakes.CurrentCake() && !collision.gameObject.CompareTag("Wall"))
         {
-            if (collision.gameObject.TryGetComponent<Tray>(out Tray tray) ||
-                collision.gameObject.TryGetComponent<Cake>(out Cake cake))
-            {
-                Fell?.Invoke();
-                rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
-            }
+            Debug.Log("collided");
+            Fell?.Invoke();
+            rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 }
