@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void OnCakesChanged()
     {
+        CakeCollection.Cakes.PreviousCake().Fallen -= cakeSpawner.Spawn;
         CakeCollection.Cakes.CurrentCake().Fallen += cakeSpawner.Spawn;
     }
 }
