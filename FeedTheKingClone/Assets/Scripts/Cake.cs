@@ -21,7 +21,8 @@ public class Cake : MonoBehaviour
 
     private void MoveHorizontally()
     {
-        rigidbody2d.velocity = new Vector2(1, 0) * cakeAttributes.HorizontalSpeed;
+        int randomDirection = UnityEngine.Random.Range(0, 2) * 2 - 1;
+        rigidbody2d.velocity = new Vector2(randomDirection, 0) * cakeAttributes.HorizontalSpeed;
     }
 
     public void Fall()
