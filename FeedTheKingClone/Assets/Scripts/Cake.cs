@@ -14,7 +14,6 @@ public class Cake : MonoBehaviour
     void OnEnable()
     {
         CakeCollection.Cakes.Add(this);
-
         rigidbody2d = GetComponent<Rigidbody2D>();
 
         MoveHorizontally();
