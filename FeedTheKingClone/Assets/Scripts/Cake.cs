@@ -27,7 +27,6 @@ public class Cake : MonoBehaviour
     {
         if (this == CakeCollection.Cakes.CurrentCake() && !collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("collided");
             Fell?.Invoke();
             rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
         }
