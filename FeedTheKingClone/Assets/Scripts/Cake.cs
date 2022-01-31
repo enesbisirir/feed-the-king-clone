@@ -47,6 +47,26 @@ public class Cake : MonoBehaviour, ICollidable
         rigidbody2d.velocity = new Vector2(0, -1) * cakeAttributes.FallingSpeed;
     }
 
+    public float TopLeftCorner()
+    {
+        return topLeftCorner.transform.position.x;
+    }
+
+    public float TopRightCorner()
+    {
+        return topRightCorner.transform.position.x;
+    }
+
+    public float BottomLeftCorner()
+    {
+        return bottomLeftCorner.transform.position.x;
+    }
+
+    public float BottomRightCorner()
+    {
+        return bottomRightCorner.transform.position.x;
+    }
+
     public CakeState State()
     {
         return cakeState;
