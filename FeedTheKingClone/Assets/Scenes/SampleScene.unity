@@ -185,6 +185,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6348513008798764697, guid: 27010bc699a259e419a58976355e8ac8, type: 3}
   m_PrefabInstance: {fileID: 6348513008576395366}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &497214208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1429559477784230320, guid: 13b65ae585ee5ad4e94e72b71c6ae46e, type: 3}
+  m_PrefabInstance: {fileID: 7476364444971453893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f3d5bb28e437347a253b8ad120ef4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cakeSpawner: {fileID: 1319143939}
+  tray: {fileID: 497214208}
 --- !u!4 &1169267696
 Transform:
   m_ObjectHideFlags: 0
@@ -362,7 +374,7 @@ GameObject:
   m_Layer: 0
   m_Name: Cake Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
