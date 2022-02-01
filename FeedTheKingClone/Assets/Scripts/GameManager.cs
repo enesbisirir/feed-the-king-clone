@@ -17,11 +17,10 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            ICollidable fallingObject = CakeCollection.Cakes.CurrentCake();
-            ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? CakeCollection.Cakes.PreviousCake() : (ICollidable)tray;
-
-            bool isLegal = IsFallLegal(fallingObject, stationaryObject);
-
+            if (!IsFallLegal())
+            {
+                CakeCollection.Cakes.CurrentCake().FreeFall();
+            }
             CakeCollection.Cakes.CurrentCake().Fall();
         }
 
@@ -29,13 +28,17 @@ public class GameManager : MonoBehaviour
 
     private void OnFallen()
     {
+        CakeCollection.Cakes.CurrentCake().Stop();
         cakeSpawner.Spawn();
     }
 
-    private bool IsFallLegal(ICollidable fallingItem, ICollidable stationaryItem)
+    private bool IsFallLegal()
     {
-        if (fallingItem.BottomLeftCorner() > stationaryItem.TopRightCorner() ||
-            fallingItem.BottomRightCorner() < stationaryItem.TopLeftCorner())
+        ICollidable fallingObject = CakeCollection.Cakes.CurrentCake();
+        ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? CakeCollection.Cakes.PreviousCake() : (ICollidable)tray;
+
+        if (fallingObject.BottomLeftCorner() > stationaryObject.TopRightCorner() ||
+            fallingObject.BottomRightCorner() < stationaryObject.TopLeftCorner())
         {
             return false;
         }

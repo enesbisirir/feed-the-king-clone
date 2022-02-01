@@ -28,7 +28,6 @@ public class Cake : MonoBehaviour, ICollidable
         if (this == CakeCollection.Cakes.CurrentCake() && !collision.gameObject.CompareTag("Wall"))
         {
             Fallen?.Invoke();
-            rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
@@ -41,6 +40,16 @@ public class Cake : MonoBehaviour, ICollidable
     public void Fall()
     {
         rigidbody2d.velocity = new Vector2(0, -1) * cakeAttributes.FallingSpeed;
+    }
+
+    public void Stop()
+    {
+        rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    public void FreeFall()
+    {
+        Destroy(GetComponent<PolygonCollider2D>());
     }
 
     public float TopLeftCorner() => topLeftCorner.transform.position.x;
