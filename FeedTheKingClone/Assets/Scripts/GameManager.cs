@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         cakeSpawner.Spawn();
-        CakeCollection.Cakes.CurrentCake().Fallen += OnFallen;
-        CakeCollection.Cakes.Changed += OnCakesChanged;
+        Cake.Fallen += OnFallen;
     }
 
     void Update()
@@ -37,14 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void OnFallen()
     {
-
         cakeSpawner.Spawn();
-    }
-
-    private void OnCakesChanged()
-    {
-        CakeCollection.Cakes.PreviousCake().Fallen -= OnFallen;
-        CakeCollection.Cakes.CurrentCake().Fallen += OnFallen;
     }
 
     private bool IsFallLegal(ICollidable fallingItem, ICollidable stationaryItem)

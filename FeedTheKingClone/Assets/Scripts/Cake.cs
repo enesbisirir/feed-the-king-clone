@@ -14,7 +14,7 @@ public class Cake : MonoBehaviour, ICollidable
     private Rigidbody2D rigidbody2d;
     private CakeState cakeState;
 
-    public Action Fallen { get; internal set; }
+    public static Action Fallen { get; internal set; }
 
     void OnEnable()
     {
