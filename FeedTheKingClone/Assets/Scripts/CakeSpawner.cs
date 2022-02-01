@@ -6,10 +6,7 @@ public class CakeSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] cakePrefabs;
 
-    public void Spawn()
-    {
-        Instantiate(SelectCake(), transform.position, Quaternion.identity);
-    }
+    public void Spawn() => Instantiate(SelectCake(), transform.position, Quaternion.identity);
 
     //TODO: Select cakes to spawn based on time passed
     private GameObject SelectCake()

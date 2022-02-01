@@ -9,23 +9,11 @@ public class Tray : MonoBehaviour, ICollidable
     [SerializeField] private GameObject bottomLeftCorner;
     [SerializeField] private GameObject bottomRightCorner;
 
-    public float TopLeftCorner()
-    {
-        return topLeftCorner.transform.position.x;
-    }
+    public float TopLeftCorner() => topLeftCorner.transform.position.x;
 
-    public float TopRightCorner()
-    {
-        return topRightCorner.transform.position.x;
-    }
+    public float TopRightCorner() => topRightCorner.transform.position.x;
 
-    public float BottomLeftCorner()
-    {
-        return bottomLeftCorner.transform.position.x;
-    }
+    public float BottomLeftCorner() => bottomLeftCorner.transform.position.x;
 
-    public float BottomRightCorner()
-    {
-        return bottomRightCorner.transform.position.x;
-    }
+    public float BottomRightCorner() => bottomRightCorner.transform.position.x;
 }
