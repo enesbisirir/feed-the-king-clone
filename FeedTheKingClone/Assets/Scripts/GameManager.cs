@@ -17,16 +17,15 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (!IsFallLegal())
+            if (IsFallLegal())
+            {
+                CakeCollection.Cakes.CurrentCake().Fall();
+            }
+            else
             {
                 CakeCollection.Cakes.CurrentCake().FreeFall();
                 CakeCollection.Cakes.CurrentCake().Destroyy();
                 cakeSpawner.Spawn();
-
-            }
-            else
-            {
-                CakeCollection.Cakes.CurrentCake().Fall();
             }
         }
 
