@@ -23,13 +23,7 @@ public class CakeCollection
         currentCake = cake;
     }
 
-    public Cake CurrentCake()
-    {
-        return currentCake;
-    }
+    public Cake CurrentCake() => currentCake;
 
-    public Cake PreviousCake()
-    {
-        return previousCake;
-    }
+    public Cake PreviousCake() => previousCake;
 }
