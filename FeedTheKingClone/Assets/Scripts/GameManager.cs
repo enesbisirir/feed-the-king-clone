@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CakeSpawner cakeSpawner;
+    [SerializeField] private Tray tray;
 
     void Start()
     {
@@ -16,22 +17,14 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (CakeCollection.Cakes.PreviousCake() is Cake)
-            {
-                bool isLegal = IsFallLegal(CakeCollection.Cakes.CurrentCake(), CakeCollection.Cakes.PreviousCake());
+            ICollidable fallingObject = CakeCollection.Cakes.CurrentCake();
+            ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? CakeCollection.Cakes.PreviousCake() : (ICollidable)tray;
 
-                if (isLegal == true)
-                {
-                    Debug.Log("legal");
-                }
-                else
-                {
-                    Debug.Log("not legal");
-                }
+            bool isLegal = IsFallLegal(fallingObject, stationaryObject);
 
-            }
             CakeCollection.Cakes.CurrentCake().Fall();
         }
+
     }
 
     private void OnFallen()
@@ -41,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     private bool IsFallLegal(ICollidable fallingItem, ICollidable stationaryItem)
     {
-        if (fallingItem.BottomLeftCorner() > stationaryItem.TopRightCorner() || 
+        if (fallingItem.BottomLeftCorner() > stationaryItem.TopRightCorner() ||
             fallingItem.BottomRightCorner() < stationaryItem.TopLeftCorner())
         {
             return false;
