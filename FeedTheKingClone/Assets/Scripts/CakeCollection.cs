@@ -12,8 +12,6 @@ public class CakeCollection
     private Cake currentCake;
     private Cake previousCake;
 
-    public event Action Changed;
-
     public void Add(Cake cake)
     {
         cakes.Add(cake);
@@ -23,8 +21,6 @@ public class CakeCollection
             previousCake = currentCake;
         }
         currentCake = cake;
-
-        Changed?.Invoke();
     }
 
     public Cake CurrentCake()
