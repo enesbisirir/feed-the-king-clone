@@ -49,7 +49,14 @@ public class Cake : MonoBehaviour, ICollidable
 
     public void FreeFall()
     {
+        GetComponent<SpriteRenderer>().sortingOrder += 1;
+        Fall();
         Destroy(GetComponent<PolygonCollider2D>());
+    }
+
+    public void Destroyy()
+    {
+        Destroy(gameObject, cakeAttributes.IllegalFallDestroyDelay);
     }
 
     public float TopLeftCorner() => topLeftCorner.transform.position.x;

@@ -20,8 +20,14 @@ public class GameManager : MonoBehaviour
             if (!IsFallLegal())
             {
                 CakeCollection.Cakes.CurrentCake().FreeFall();
+                CakeCollection.Cakes.CurrentCake().Destroyy();
+                cakeSpawner.Spawn();
+
             }
-            CakeCollection.Cakes.CurrentCake().Fall();
+            else
+            {
+                CakeCollection.Cakes.CurrentCake().Fall();
+            }
         }
 
     }
