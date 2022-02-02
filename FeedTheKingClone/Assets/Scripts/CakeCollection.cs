@@ -9,21 +9,12 @@ public class CakeCollection
 
     public static CakeCollection Cakes = new CakeCollection();
 
-    private Cake currentCake;
-    private Cake previousCake;
-
     public void Add(Cake cake)
     {
         cakes.Add(cake);
-
-        if (currentCake != null)
-        {
-            previousCake = currentCake;
-        }
-        currentCake = cake;
     }
 
-    public Cake CurrentCake() => currentCake;
+    public Cake CurrentCake() => cakes[cakes.Count - 1];
 
-    public Cake PreviousCake() => previousCake;
+    public Cake PreviousCake() => cakes.Count >= 2 ? cakes[cakes.Count - 2] : null;
 }
