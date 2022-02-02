@@ -17,33 +17,24 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (IsFallLegal())
-            {
-                CakeCollection.Cakes.CurrentCake().Fall();
-            }
-            else
-            {
-                CakeCollection.Cakes.CurrentCake().FreeFall();
-                CakeCollection.Cakes.CurrentCake().Destroyy();
-                cakeSpawner.Spawn();
-            }
+            CakeCollection.Cakes.CurrentCake().Fall();
         }
 
     }
 
-    private void OnFallen()
+    private void OnFallen(GameObject fallingObject, GameObject stationaryObject)
     {
-        CakeCollection.Cakes.CurrentCake().Stop();
+        fallingObject.GetComponent<Cake>().Stop();
         cakeSpawner.Spawn();
     }
 
-    private bool IsFallLegal()
+    private bool IsFallLegal(GameObject fallingObject, GameObject stationaryObject)
     {
-        ICollidable fallingObject = CakeCollection.Cakes.CurrentCake();
-        ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? CakeCollection.Cakes.PreviousCake() : (ICollidable)tray;
+        var fallingObjectICollidable = fallingObject.GetComponent<ICollidable>();
+        var stationaryObjectICollidable = stationaryObject.GetComponent<ICollidable>();
 
-        if (fallingObject.BottomLeftCorner() > stationaryObject.TopRightCorner() ||
-            fallingObject.BottomRightCorner() < stationaryObject.TopLeftCorner())
+        if (fallingObjectICollidable.BottomLeftCorner() > stationaryObjectICollidable.TopRightCorner() ||
+            fallingObjectICollidable.BottomRightCorner() < stationaryObjectICollidable.TopLeftCorner())
         {
             return false;
         }

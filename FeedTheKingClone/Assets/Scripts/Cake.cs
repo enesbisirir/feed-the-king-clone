@@ -13,7 +13,7 @@ public class Cake : MonoBehaviour, ICollidable
 
     private Rigidbody2D rigidbody2d;
 
-    public static Action Fallen { get; internal set; }
+    public static Action<GameObject, GameObject> Fallen { get; internal set; }
 
     void OnEnable()
     {
@@ -27,7 +27,7 @@ public class Cake : MonoBehaviour, ICollidable
     {
         if (this == CakeCollection.Cakes.CurrentCake() && !collision.gameObject.CompareTag("Wall"))
         {
-            Fallen?.Invoke();
+            Fallen?.Invoke(this.gameObject, collision.gameObject);
         }
     }
 
@@ -50,11 +50,11 @@ public class Cake : MonoBehaviour, ICollidable
     public void FreeFall()
     {
         GetComponent<SpriteRenderer>().sortingOrder += 1;
-        Fall();
         Destroy(GetComponent<PolygonCollider2D>());
+        Fall();
     }
 
-    public void Destroyy()
+    public void DestroyCake()
     {
         Destroy(gameObject, cakeAttributes.IllegalFallDestroyDelay);
     }
