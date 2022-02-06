@@ -14,6 +14,11 @@ public class CakeCollection
         cakes.Add(cake);
     }
 
+    public void Remove(Cake cake)
+    {
+        cakes.Remove(cake);
+    }
+
     public Cake CurrentCake() => cakes[cakes.Count - 1];
 
     public Cake PreviousCake() => cakes.Count >= 2 ? cakes[cakes.Count - 2] : null;
