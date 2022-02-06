@@ -6,14 +6,13 @@ using UnityEngine;
 public class Cake : MonoBehaviour, ICollidable
 {
     [SerializeField] private CakeAttributes cakeAttributes;
-    [SerializeField] private GameObject topLeftCorner;
-    [SerializeField] private GameObject topRightCorner;
     [SerializeField] private GameObject bottomLeftCorner;
     [SerializeField] private GameObject bottomRightCorner;
 
     private Rigidbody2D rigidbody2d;
 
     public static Action<GameObject, GameObject> Fallen { get; internal set; }
+    public static Action<Cake> FallStarted { get; internal set; }
 
     void OnEnable()
     {
@@ -40,6 +39,7 @@ public class Cake : MonoBehaviour, ICollidable
     public void Fall()
     {
         rigidbody2d.velocity = new Vector2(0, -1) * cakeAttributes.FallingSpeed;
+        FallStarted?.Invoke(this);
     }
 
     public void Stop()
@@ -59,11 +59,7 @@ public class Cake : MonoBehaviour, ICollidable
         Destroy(gameObject, cakeAttributes.IllegalFallDestroyDelay);
     }
 
-    public float TopLeftCorner() => topLeftCorner.transform.position.x;
+    public GameObject BottomLeftCorner() => bottomLeftCorner;
 
-    public float TopRightCorner() => topRightCorner.transform.position.x;
-
-    public float BottomLeftCorner() => bottomLeftCorner.transform.position.x;
-
-    public float BottomRightCorner() => bottomRightCorner.transform.position.x;
+    public GameObject BottomRightCorner() => bottomRightCorner;
 }
