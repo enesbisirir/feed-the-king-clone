@@ -194,6 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cakeAttributes: {fileID: 11400000, guid: 68d14f2452036e0429f210386a4bb278, type: 2}
+  topLeftCorner: {fileID: 4839252093358378284}
+  topRightCorner: {fileID: 6105249555924609097}
   bottomLeftCorner: {fileID: 532749171551563075}
   bottomRightCorner: {fileID: 8168827705905928872}
 --- !u!1 &4839252093358378284

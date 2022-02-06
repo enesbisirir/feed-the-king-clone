@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6141666543302824880}
   m_Layer: 0
-  m_Name: TopRightCorner
+  m_Name: Top Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1024985325660664407}
   m_Layer: 0
-  m_Name: BottomRightCorner
+  m_Name: Bottom Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2574941603151489851}
   m_Layer: 0
-  m_Name: TopLeftCorner
+  m_Name: Top Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f3d5bb28e437347a253b8ad120ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topLeftCorner: {fileID: 5598368175719308071}
+  topRightCorner: {fileID: 2465164613089045289}
   bottomLeftCorner: {fileID: 8608060815216209259}
   bottomRightCorner: {fileID: 3260075333788890281}
 --- !u!1 &8608060815216209259
@@ -250,7 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2517242520706161754}
   m_Layer: 0
-  m_Name: BottomLeftCorner
+  m_Name: Bottom Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

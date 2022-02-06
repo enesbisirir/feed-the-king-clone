@@ -6,6 +6,8 @@ using UnityEngine;
 public class Cake : MonoBehaviour, ICollidable
 {
     [SerializeField] private CakeAttributes cakeAttributes;
+    [SerializeField] private GameObject topLeftCorner;
+    [SerializeField] private GameObject topRightCorner;
     [SerializeField] private GameObject bottomLeftCorner;
     [SerializeField] private GameObject bottomRightCorner;
 
@@ -59,7 +61,8 @@ public class Cake : MonoBehaviour, ICollidable
         Destroy(gameObject, cakeAttributes.IllegalFallDestroyDelay);
     }
 
+    public GameObject TopLeftCorner() => topLeftCorner;
+    public GameObject TopRightCorner() => topRightCorner;
     public GameObject BottomLeftCorner() => bottomLeftCorner;
-
     public GameObject BottomRightCorner() => bottomRightCorner;
 }
