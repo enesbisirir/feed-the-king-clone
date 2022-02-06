@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         cakeSpawner.Spawn();
+        Cake.FallStarted += OnFallStarted;
         Cake.Fallen += OnFallen;
     }
 
@@ -19,7 +21,6 @@ public class GameManager : MonoBehaviour
         {
             CakeCollection.Cakes.CurrentCake().Fall();
         }
-
     }
 
     private void OnFallen(GameObject fallingObject, GameObject stationaryObject)
@@ -28,13 +29,25 @@ public class GameManager : MonoBehaviour
         cakeSpawner.Spawn();
     }
 
-    private bool IsFallLegal(GameObject fallingObject, GameObject stationaryObject)
+    private void OnFallStarted(Cake cake)
     {
-        var fallingObjectICollidable = fallingObject.GetComponent<ICollidable>();
-        var stationaryObjectICollidable = stationaryObject.GetComponent<ICollidable>();
+        ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? 
+                                       CakeCollection.Cakes.PreviousCake().GetComponent<ICollidable>() : 
+                                       tray.GetComponent<ICollidable>();
 
-        if (fallingObjectICollidable.BottomLeftCorner() > stationaryObjectICollidable.TopRightCorner() ||
-            fallingObjectICollidable.BottomRightCorner() < stationaryObjectICollidable.TopLeftCorner())
+        if (!IsFallLegal(cake.GetComponent<ICollidable>(), stationaryObject))
+        {
+            cake.FreeFall();
+            cake.DestroyCake();
+
+            cakeSpawner.Spawn();
+        }
+    }
+
+    private bool IsFallLegal(ICollidable fallingObject, ICollidable stationaryObject)
+    {
+        if (fallingObject.BottomLeftCorner().transform.position.x > stationaryObject.TopRightCorner().transform.position.x ||
+            fallingObject.BottomRightCorner().transform.position.x < stationaryObject.TopLeftCorner().transform.position.x)
         {
             return false;
         }
