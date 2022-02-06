@@ -53,11 +53,11 @@ public class Cake : MonoBehaviour, ICollidable
     {
         GetComponent<SpriteRenderer>().sortingOrder += 1;
         Destroy(GetComponent<PolygonCollider2D>());
-        Fall();
     }
 
     public void DestroyCake()
     {
+        CakeCollection.Cakes.Remove(this);
         Destroy(gameObject, cakeAttributes.IllegalFallDestroyDelay);
     }
 
