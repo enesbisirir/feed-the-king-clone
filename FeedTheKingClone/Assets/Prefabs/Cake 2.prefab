@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2612013646731206562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.482, y: -0.475, z: 0}
+  m_LocalPosition: {x: 0.482, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9210530286126037}
@@ -220,8 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cakeAttributes: {fileID: 11400000, guid: 68d14f2452036e0429f210386a4bb278, type: 2}
-  topLeftCorner: {fileID: 6675291834488937771}
-  topRightCorner: {fileID: 1517780754564265048}
   bottomLeftCorner: {fileID: 9122641794085074743}
   bottomRightCorner: {fileID: 2612013646731206562}
 --- !u!1 &6675291834488937771
@@ -278,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9122641794085074743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.53, y: -0.475, z: 0}
+  m_LocalPosition: {x: -0.53, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9210530286126037}

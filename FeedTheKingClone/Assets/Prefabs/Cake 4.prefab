@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118357855800315751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68, y: -0.345, z: 0}
+  m_LocalPosition: {x: 0.68, y: -0.379, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1716736103601955251}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4616623718121464584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.681, y: -0.345, z: 0}
+  m_LocalPosition: {x: -0.681, y: -0.37899992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1716736103601955251}
@@ -242,8 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cakeAttributes: {fileID: 11400000, guid: 68d14f2452036e0429f210386a4bb278, type: 2}
-  topLeftCorner: {fileID: 5673663275449058144}
-  topRightCorner: {fileID: 9112485177711444304}
   bottomLeftCorner: {fileID: 4616623718121464584}
   bottomRightCorner: {fileID: 1118357855800315751}
 --- !u!1 &9112485177711444304
