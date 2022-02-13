@@ -17,9 +17,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        //TODO: Seperate input system
+        if (Input.touchCount == 1)
         {
-            CakeCollection.Cakes.CurrentCake().Fall();
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+                CakeCollection.Cakes.CurrentCake().Fall();
         }
     }
 
