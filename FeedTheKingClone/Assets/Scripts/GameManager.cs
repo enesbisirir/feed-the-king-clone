@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         cakeSpawner.Spawn();
     }
 
-    private void OnTouchStarted(Touch touch)
+    private void OnTouchStarted()
     {
         CakeCollection.Cakes.CurrentCake().Fall();
     }

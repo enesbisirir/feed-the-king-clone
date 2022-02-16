@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    public Action<Touch> TouchStarted { get; internal set; }
+    public Action TouchStarted { get; internal set; }
 
     void Update()
     {
@@ -13,7 +13,7 @@ public class InputHandler : MonoBehaviour
         {
             if (touch.phase == TouchPhase.Began)
             {
-                TouchStarted?.Invoke(touch);
+                TouchStarted?.Invoke();
             }
         }
     }
