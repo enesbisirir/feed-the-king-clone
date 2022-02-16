@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CakeSpawner cakeSpawner;
     [SerializeField] private Tray tray;
     [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private GameState gameState; // SerializeField for testing purposes
     
     void OnEnable()
     {
