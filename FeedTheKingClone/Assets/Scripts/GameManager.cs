@@ -8,15 +8,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CakeSpawner cakeSpawner;
     [SerializeField] private Tray tray;
     [SerializeField] private InputHandler inputHandler;
-
-    void Start()
+    
+    void OnEnable()
     {
-        cakeSpawner.Spawn();
         Cake.FallStarted += OnFallStarted;
         Cake.Fallen += OnFallen;
         inputHandler.TouchStarted += OnTouchStarted;
     }
-       
+
+    void Start()
+    {
+        cakeSpawner.Spawn();
+    }
+
     private void OnFallStarted(Cake cake)
     {
         ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? 
@@ -54,5 +58,12 @@ public class GameManager : MonoBehaviour
         {
             return true;
         }
+    }
+
+    void OnDisable()
+    {
+        Cake.FallStarted -= OnFallStarted;
+        Cake.Fallen -= OnFallen;
+        inputHandler.TouchStarted -= OnTouchStarted;
     }
 }
