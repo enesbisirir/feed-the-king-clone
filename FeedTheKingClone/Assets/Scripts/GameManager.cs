@@ -7,32 +7,16 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private CakeSpawner cakeSpawner;
     [SerializeField] private Tray tray;
+    [SerializeField] private InputHandler inputHandler;
 
     void Start()
     {
         cakeSpawner.Spawn();
         Cake.FallStarted += OnFallStarted;
         Cake.Fallen += OnFallen;
+        inputHandler.TouchStarted += OnTouchStarted;
     }
-
-    void Update()
-    {
-        //TODO: Seperate input system
-        if (Input.touchCount == 1)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
-                CakeCollection.Cakes.CurrentCake().Fall();
-        }
-    }
-
-    private void OnFallen(GameObject fallingObject, GameObject stationaryObject)
-    {
-        fallingObject.GetComponent<Cake>().Stop();
-        cakeSpawner.Spawn();
-    }
-
+       
     private void OnFallStarted(Cake cake)
     {
         ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? 
@@ -46,6 +30,17 @@ public class GameManager : MonoBehaviour
 
             cakeSpawner.Spawn();
         }
+    }
+
+    private void OnFallen(GameObject fallingObject, GameObject stationaryObject)
+    {
+        fallingObject.GetComponent<Cake>().Stop();
+        cakeSpawner.Spawn();
+    }
+
+    private void OnTouchStarted(Touch touch)
+    {
+        CakeCollection.Cakes.CurrentCake().Fall();
     }
 
     private bool IsFallLegal(ICollidable fallingObject, ICollidable stationaryObject)
