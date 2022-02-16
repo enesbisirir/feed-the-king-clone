@@ -6,15 +6,22 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     public Action TouchStarted { get; internal set; }
+    public static Vector2 TouchPosition;  //TODO: Don't use static field
+
+    private Touch touch;
 
     void Update()
     {
-        foreach (Touch touch in Input.touches)
+        if (Input.touchCount > 0)
         {
+            touch = Input.GetTouch(0);
+
             if (touch.phase == TouchPhase.Began)
             {
                 TouchStarted?.Invoke();
             }
+            TouchPosition = touch.position;
         }
+
     }
 }
