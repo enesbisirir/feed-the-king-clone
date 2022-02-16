@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CakeSpawner cakeSpawner;
     [SerializeField] private Tray tray;
     [SerializeField] private InputHandler inputHandler;
-    [SerializeField] private GameState gameState; // SerializeField for testing purposes
+    [SerializeField] private King king;
+
+    private GameState gameState = GameState.CakePhase; 
     
     void OnEnable()
     {
@@ -46,6 +48,10 @@ public class GameManager : MonoBehaviour
     private void OnTouchStarted()
     {
         CakeCollection.Cakes.CurrentCake().Fall();
+        if (gameState == GameState.KingPhase)
+        {
+            king.SetFollowing(true);
+        }
     }
 
     private bool IsFallLegal(ICollidable fallingObject, ICollidable stationaryObject)
