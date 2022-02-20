@@ -15,13 +15,16 @@ public class CameraController : MonoBehaviour
 
     private void OnFallen(GameObject cake, GameObject ground)
     {
+        StopAllCoroutines();
+        StartCoroutine(MoveCamera(TargetAfterCakeFall(cake)));
+    }
+
+    private Vector3 TargetAfterCakeFall(GameObject cake)
+    {
         ICollidable cakeICollidable = cake.GetComponent<ICollidable>();
         float cakeHeight = cakeICollidable.TopLeftCorner().transform.position.y - cakeICollidable.BottomLeftCorner().transform.position.y;
-        
-        Vector3 target = new Vector3(transform.position.x, transform.position.y + cakeHeight, transform.position.z);
-        StopAllCoroutines();
 
-        StartCoroutine(MoveCamera(target));
+        return new Vector3(transform.position.x, transform.position.y + cakeHeight, transform.position.z);
     }
 
     private IEnumerator MoveCamera(Vector3 target)
