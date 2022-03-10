@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CakeFallState : BaseState
 {
-    public override void OnEnter()
+    protected override void OnEnter()
     {
         
     }
-    public override void OnUpdate()
+    protected override void OnUpdate()
     {
 
     }
-    public override void OnExit()
+    protected override void OnExit()
     {
 
     }
