@@ -16,7 +16,8 @@ public class CameraController : MonoBehaviour
     private void OnFallen(GameObject cake, GameObject ground)
     {
         StopAllCoroutines();
-        StartCoroutine(MoveCamera(TargetAfterCakeFall(cake)));
+        var futurePosition = TargetAfterCakeFall(cake);
+        StartCoroutine(MoveCamera(futurePosition));
     }
 
     private Vector3 TargetAfterCakeFall(GameObject cake)
