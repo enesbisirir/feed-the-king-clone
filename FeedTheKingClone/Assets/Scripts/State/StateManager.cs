@@ -10,6 +10,7 @@ public class StateManager : MonoBehaviour
 
     private void Awake()
     {
+        stateFactory = new StateFactory();
         container = FindObjectOfType<ObjectContainer>();
     }
 

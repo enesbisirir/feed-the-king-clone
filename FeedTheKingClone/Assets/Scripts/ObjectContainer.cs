@@ -13,10 +13,13 @@ public class ObjectContainer : MonoBehaviour
 
     private void Awake()
     {
-        components.Add("CakeSpawner", cakeSpawner);
-        components.Add("Tray", tray);
-        components.Add("InputHandler", inputHandler);
-        components.Add("King", cakeSpawner);
+        components = new Dictionary<string, object>
+        {
+            { "CakeSpawner", cakeSpawner },
+            { "Tray", tray },
+            { "InputHandler", inputHandler },
+            { "King", king }
+        };
     }
 
     public new object GetComponent(string componentKey)
