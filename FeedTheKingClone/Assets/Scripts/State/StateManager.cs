@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private BaseState currentState;
+    private StateFactory stateFactory;
+
     void Start()
     {
-        
+        currentState = stateFactory.GetState(GameState.CakeFallState);
+        currentState.Enter();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
