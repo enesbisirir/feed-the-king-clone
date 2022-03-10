@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class StateFactory
 {
-    public BaseState GetState(GameState gameState)
+    public BaseState GetState(GameState gameState, ObjectContainer container)
     {
         return gameState switch
         {
-            GameState.CakeFallState => new CakeFallState(),
-            GameState.KingEatingState => new KingEatingState(),
+            GameState.CakeFallState => new CakeFallState(container),
+            GameState.KingEatingState => new KingEatingState(container),
             _ => null,
         };
     }

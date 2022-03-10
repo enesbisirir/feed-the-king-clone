@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class KingEatingState : BaseState
 {
+    public KingEatingState(ObjectContainer container)
+    {
+
+    }
     protected override void OnEnter()
     {
 

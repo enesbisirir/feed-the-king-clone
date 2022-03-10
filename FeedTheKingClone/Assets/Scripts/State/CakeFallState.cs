@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class CakeFallState : BaseState
 {
+    private CakeSpawner cakeSpawner;
+    private Tray tray;
+    private InputHandler inputHandler;
+    private King king;
+
+    public CakeFallState(ObjectContainer container)
+    {
+        
+    }
+
     protected override void OnEnter()
     {
         
