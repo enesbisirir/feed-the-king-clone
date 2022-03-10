@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private King king;
 
-    private GameState gameState = GameState.CakePhase; 
+    private GameState gameState = GameState.CakeFallState; 
     
     void OnEnable()
     {
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     private void OnTouchStarted()
     {
         CakeCollection.Cakes.CurrentCake().Fall();
-        if (gameState == GameState.KingPhase)
+        if (gameState == GameState.KingEatingState)
         {
             king.SetFollowing(true);
         }
