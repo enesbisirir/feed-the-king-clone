@@ -24,11 +24,6 @@ public class PlayerHealth
             Debug.Log($"Current health: {health}");
             HealthDecreased?.Invoke(health);
         }
-        //else if (health == 0) 
-        //{
-        //    Debug.Log("Dead");
-        //    Dead?.Invoke();
-        //}
         else 
         {
             Debug.LogWarning("Health cannot be below 0");

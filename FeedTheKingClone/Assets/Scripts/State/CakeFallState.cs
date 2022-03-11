@@ -8,7 +8,6 @@ public class CakeFallState : BaseState
     private CakeSpawner cakeSpawner;
     private Tray tray;
     private InputHandler inputHandler;
-    private King king;
     private PlayerHealth playerHealth;
     private Action<Cake> FallenIllegally {get; set;}
 
@@ -17,7 +16,6 @@ public class CakeFallState : BaseState
         cakeSpawner = container.GetComponent("CakeSpawner") as CakeSpawner;
         tray = container.GetComponent("Tray") as Tray;
         inputHandler = container.GetComponent("InputHandler") as InputHandler;
-        king = container.GetComponent("King") as King;
         playerHealth = container.GetComponent("PlayerHealth") as PlayerHealth;
     }
 

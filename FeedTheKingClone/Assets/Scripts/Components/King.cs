@@ -5,17 +5,17 @@ using UnityEngine;
 public class King : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
-    private bool isFollowing = false;
+    //private bool isFollowing = false;
 
     private void Update()
     {
-        if (isFollowing)
-        {
-            FollowTouch();
-        }
+        //if (isFollowing)
+        //{
+        //    FollowTouch();
+        //}
     }
 
-    private void FollowTouch()
+    public void FollowTouch()
     {
         var touchPos = Camera.main.ScreenToWorldPoint(InputHandler.TouchPosition);
         touchPos.y = transform.position.y;
@@ -23,8 +23,8 @@ public class King : MonoBehaviour
         transform.position = Vector2.Lerp(transform.position, touchPos, Time.deltaTime * speed);
     }
 
-    public void SetFollowing(bool follow)
-    {
-        isFollowing = follow;
-    }
+    //public void SetFollowing(bool follow)
+    //{
+    //    isFollowing = follow;
+    //}
 }
