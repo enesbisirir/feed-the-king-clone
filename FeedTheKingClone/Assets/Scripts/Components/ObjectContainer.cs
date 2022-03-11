@@ -9,16 +9,21 @@ public class ObjectContainer : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private King king;
 
+    private PlayerHealth playerHealth;
+
     private Dictionary<string, object> components;
 
     private void Awake()
     {
+        playerHealth = new PlayerHealth();
+
         components = new Dictionary<string, object>
         {
             { "CakeSpawner", cakeSpawner },
             { "Tray", tray },
             { "InputHandler", inputHandler },
-            { "King", king }
+            { "King", king },
+            { "PlayerHealth", playerHealth }
         };
     }
 

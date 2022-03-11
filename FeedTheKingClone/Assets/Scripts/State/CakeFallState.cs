@@ -9,6 +9,7 @@ public class CakeFallState : BaseState
     private Tray tray;
     private InputHandler inputHandler;
     private King king;
+    private PlayerHealth playerHealth;
     private Action<Cake> FallenIllegally {get; set;}
 
     public CakeFallState(ObjectContainer container)
@@ -17,6 +18,7 @@ public class CakeFallState : BaseState
         tray = container.GetComponent("Tray") as Tray;
         inputHandler = container.GetComponent("InputHandler") as InputHandler;
         king = container.GetComponent("King") as King;
+        playerHealth = container.GetComponent("PlayerHealth") as PlayerHealth;
     }
 
     protected override void OnEnter()
