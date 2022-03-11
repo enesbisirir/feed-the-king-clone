@@ -61,9 +61,10 @@ public class CakeFallState : BaseState
         cake.FreeFall();
         cake.DestroyCake();
 
-        playerHealth.DecreaseHealth();
-
-        cakeSpawner.Spawn();
+        var currentHealth = playerHealth.DecreaseHealth();
+        
+        if (currentHealth > 0)
+            cakeSpawner.Spawn();
     }
 
     private bool IsFallLegal(ICollidable fallingObject, ICollidable stationaryObject)
