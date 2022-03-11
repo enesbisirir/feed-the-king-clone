@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CakeFallState : BaseState
 {
@@ -8,6 +9,7 @@ public class CakeFallState : BaseState
     private Tray tray;
     private InputHandler inputHandler;
     private King king;
+    private Action<Cake> FallenIllegally {get; set;}
 
     public CakeFallState(ObjectContainer container)
     {
@@ -22,6 +24,7 @@ public class CakeFallState : BaseState
         Cake.FallStarted += OnFallStarted;
         Cake.Fallen += OnFallen;
         inputHandler.TouchStarted += OnTouchStarted;
+        FallenIllegally += OnFallIllegally;
 
         cakeSpawner.Spawn();
     }
@@ -46,11 +49,16 @@ public class CakeFallState : BaseState
 
         if (!IsFallLegal(fallingObject, stationaryObject))
         {
-            cake.FreeFall();
-            cake.DestroyCake();
-
-            cakeSpawner.Spawn();
+            FallenIllegally?.Invoke(cake);
         }
+    }
+
+    private void OnFallIllegally(Cake cake)
+    {
+        cake.FreeFall();
+        cake.DestroyCake();
+
+        cakeSpawner.Spawn();
     }
 
     private bool IsFallLegal(ICollidable fallingObject, ICollidable stationaryObject)
