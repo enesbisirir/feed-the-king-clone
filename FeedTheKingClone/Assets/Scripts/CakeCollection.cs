@@ -22,4 +22,6 @@ public class CakeCollection
     public Cake CurrentCake() => cakes[cakes.Count - 1];
 
     public Cake PreviousCake() => cakes.Count >= 2 ? cakes[cakes.Count - 2] : null;
+
+    public int CakeCount => cakes.Count;
 }

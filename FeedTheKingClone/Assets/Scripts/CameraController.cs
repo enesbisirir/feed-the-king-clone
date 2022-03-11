@@ -5,19 +5,29 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private float time = .2f;
+    [SerializeField] private float cakeFallMovementTime = .2f;
+    [SerializeField] private float moveToKingTimeMultiplier = .3f;
     [SerializeField] private AnimationCurve curve;
 
     private void OnEnable()
     {
         Cake.Fallen += OnFallen;
+        KingEatingState.KingStateEntered += OnKingStateEntered;
+    }
+
+    private void OnKingStateEntered(King king)
+    {
+        StopAllCoroutines();
+        var futurePosition = king.transform.position;
+        futurePosition.z = transform.position.z;
+        StartCoroutine(MoveCamera(futurePosition, moveToKingTimeMultiplier * CakeCollection.Cakes.CakeCount));
     }
 
     private void OnFallen(GameObject cake, GameObject ground)
     {
         StopAllCoroutines();
         var futurePosition = TargetAfterCakeFall(cake);
-        StartCoroutine(MoveCamera(futurePosition));
+        StartCoroutine(MoveCamera(futurePosition, cakeFallMovementTime));
     }
 
     private Vector3 TargetAfterCakeFall(GameObject cake)
@@ -28,14 +38,14 @@ public class CameraController : MonoBehaviour
         return new Vector3(transform.position.x, transform.position.y + cakeHeight, transform.position.z);
     }
 
-    private IEnumerator MoveCamera(Vector3 target)
+    private IEnumerator MoveCamera(Vector3 target, float movementTime)
     {
         float timePassed = 0f;
-        while (time > timePassed)
+        while (movementTime > timePassed)
         {
             timePassed += Time.deltaTime;
 
-            var normalized = timePassed / time;
+            var normalized = timePassed / movementTime;
             normalized = curve.Evaluate(normalized);
 
             transform.position = Vector3.Lerp(transform.position, target, normalized);
