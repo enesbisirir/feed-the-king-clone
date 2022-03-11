@@ -5,72 +5,72 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private CakeSpawner cakeSpawner;
-    [SerializeField] private Tray tray;
-    [SerializeField] private InputHandler inputHandler;
-    [SerializeField] private King king;
+    //[SerializeField] private CakeSpawner cakeSpawner;
+    //[SerializeField] private Tray tray;
+    //[SerializeField] private InputHandler inputHandler;
+    //[SerializeField] private King king;
 
-    private GameState gameState = GameState.CakePhase; 
+    //private GameState gameState = GameState.CakeFallState; 
     
-    void OnEnable()
-    {
-        Cake.FallStarted += OnFallStarted;
-        Cake.Fallen += OnFallen;
-        inputHandler.TouchStarted += OnTouchStarted;
-    }
+    //void OnEnable()
+    //{
+    //    Cake.FallStarted += OnFallStarted;
+    //    Cake.Fallen += OnFallen;
+    //    inputHandler.TouchStarted += OnTouchStarted;
+    //}
 
-    void Start()
-    {
-        cakeSpawner.Spawn();
-    }
+    //void Start()
+    //{
+    //    cakeSpawner.Spawn();
+    //}
 
-    private void OnFallStarted(Cake cake)
-    {
-        ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? 
-                                       CakeCollection.Cakes.PreviousCake().GetComponent<ICollidable>() : 
-                                       tray.GetComponent<ICollidable>();
+    //private void OnFallStarted(Cake cake)
+    //{
+    //    ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ? 
+    //                                   CakeCollection.Cakes.PreviousCake().GetComponent<ICollidable>() : 
+    //                                   tray.GetComponent<ICollidable>();
 
-        if (!IsFallLegal(cake.GetComponent<ICollidable>(), stationaryObject))
-        {
-            cake.FreeFall();
-            cake.DestroyCake();
+    //    if (!IsFallLegal(cake.GetComponent<ICollidable>(), stationaryObject))
+    //    {
+    //        cake.FreeFall();
+    //        cake.DestroyCake();
 
-            cakeSpawner.Spawn();
-        }
-    }
+    //        cakeSpawner.Spawn();
+    //    }
+    //}
 
-    private void OnFallen(GameObject fallingObject, GameObject stationaryObject)
-    {
-        fallingObject.GetComponent<Cake>().Stop();
-        cakeSpawner.Spawn();
-    }
+    //private void OnFallen(GameObject fallingObject, GameObject stationaryObject)
+    //{
+    //    fallingObject.GetComponent<Cake>().Stop();
+    //    cakeSpawner.Spawn();
+    //}
 
-    private void OnTouchStarted()
-    {
-        CakeCollection.Cakes.CurrentCake().Fall();
-        if (gameState == GameState.KingPhase)
-        {
-            king.SetFollowing(true);
-        }
-    }
+    //private void OnTouchStarted()
+    //{
+    //    CakeCollection.Cakes.CurrentCake().Fall();
+    //    if (gameState == GameState.KingEatingState)
+    //    {
+    //        king.SetFollowing(true);
+    //    }
+    //}
 
-    private bool IsFallLegal(ICollidable fallingObject, ICollidable stationaryObject)
-    {
-        if (fallingObject.BottomLeftCorner().transform.position.x > stationaryObject.TopRightCorner().transform.position.x ||
-            fallingObject.BottomRightCorner().transform.position.x < stationaryObject.TopLeftCorner().transform.position.x)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
+    //private bool IsFallLegal(ICollidable fallingObject, ICollidable stationaryObject)
+    //{
+    //    if (fallingObject.BottomLeftCorner().transform.position.x > stationaryObject.TopRightCorner().transform.position.x ||
+    //        fallingObject.BottomRightCorner().transform.position.x < stationaryObject.TopLeftCorner().transform.position.x)
+    //    {
+    //        return false;
+    //    }
+    //    else
+    //    {
+    //        return true;
+    //    }
+    //}
 
-    void OnDisable()
-    {
-        Cake.FallStarted -= OnFallStarted;
-        Cake.Fallen -= OnFallen;
-        inputHandler.TouchStarted -= OnTouchStarted;
-    }
+    //void OnDisable()
+    //{
+    //    Cake.FallStarted -= OnFallStarted;
+    //    Cake.Fallen -= OnFallen;
+    //    inputHandler.TouchStarted -= OnTouchStarted;
+    //}
 }
