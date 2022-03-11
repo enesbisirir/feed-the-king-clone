@@ -19,7 +19,7 @@ public class StateManager : MonoBehaviour
     void Start()
     {
         playerHealth = container.GetComponent("PlayerHealth") as PlayerHealth;
-        playerHealth.Dead += OnDead;
+        playerHealth.HealthDecreased += OnHealthDecreased;
 
         currentState = stateFactory.GetState(GameState.CakeFallState, container);
         currentState.Enter();
@@ -39,8 +39,11 @@ public class StateManager : MonoBehaviour
         currentState.Enter();
     }
 
-    private void OnDead()
+    private void OnHealthDecreased(int health)
     {
+        if (health > 0)
+            return;
+
         var kingEatingState = stateFactory.GetState(GameState.KingEatingState, container);
         SwitchState(kingEatingState);
     }
