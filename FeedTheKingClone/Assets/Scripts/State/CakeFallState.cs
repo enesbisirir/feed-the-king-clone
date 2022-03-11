@@ -38,11 +38,13 @@ public class CakeFallState : BaseState
 
     private void OnFallStarted(Cake cake)
     {
+        ICollidable fallingObject = cake.GetComponent<ICollidable>();
+
         ICollidable stationaryObject = CakeCollection.Cakes.PreviousCake() ?
                                        CakeCollection.Cakes.PreviousCake().GetComponent<ICollidable>() :
                                        tray.GetComponent<ICollidable>();
 
-        if (!IsFallLegal(cake.GetComponent<ICollidable>(), stationaryObject))
+        if (!IsFallLegal(fallingObject, stationaryObject))
         {
             cake.FreeFall();
             cake.DestroyCake();
