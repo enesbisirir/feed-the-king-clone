@@ -1,20 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerHealth
 {
-    private int health = 3;
+    private int health;
 
-    public int GetHealth() => health;
-    public int DecreaseHealth()
+    public Action HealthDecreased {get; private set;}
+    public Action Dead {get; private set;}
+
+    public PlayerHealth()
+    {
+        health = 3;
+    }
+
+    public void DecreaseHealth()
     {
         health -= 1;
-        return health;
+
+        if (health > 0)
+        {
+            Debug.Log($"Current health: {health}");
+            HealthDecreased?.Invoke();
+        }
+        else if (health == 0) 
+        {
+            Debug.Log("Dead");
+            Dead?.Invoke();
+        }
+        else 
+        {
+            Debug.LogWarning("Health cannot be below 0");
+        }
     }
-    public int IncreaseHealth()
-    {
-        health += 1;
-        return health;
-    }
+
+    public int GetCurrentHealth() => health;
 }

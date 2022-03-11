@@ -39,6 +39,7 @@ public class CakeFallState : BaseState
         Cake.FallStarted -= OnFallStarted;
         Cake.Fallen -= OnFallen;
         inputHandler.TouchStarted -= OnTouchStarted;
+        FallenIllegally -= OnFallIllegally;
     }
 
     private void OnFallStarted(Cake cake)
@@ -59,6 +60,8 @@ public class CakeFallState : BaseState
     {
         cake.FreeFall();
         cake.DestroyCake();
+
+        playerHealth.DecreaseHealth();
 
         cakeSpawner.Spawn();
     }
