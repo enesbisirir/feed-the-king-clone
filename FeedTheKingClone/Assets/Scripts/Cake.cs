@@ -16,12 +16,18 @@ public class Cake : MonoBehaviour, ICollidable
     public static Action<GameObject, GameObject> Fallen { get; internal set; }
     public static Action<Cake> FallStarted { get; internal set; }
 
-    void OnEnable()
+    private void OnEnable()
     {
         CakeCollection.Cakes.Add(this);
         rigidbody2d = GetComponent<Rigidbody2D>();
 
         MoveHorizontally();
+    }
+
+    private void MoveHorizontally()
+    {
+        int randomDirectionSign = UnityEngine.Random.Range(0, 2) * 2 - 1;
+        rigidbody2d.velocity = new Vector2(randomDirectionSign, 0) * cakeAttributes.HorizontalSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,19 +38,13 @@ public class Cake : MonoBehaviour, ICollidable
         }
     }
 
-    private void MoveHorizontally()
-    {
-        int randomDirection = UnityEngine.Random.Range(0, 2) * 2 - 1;
-        rigidbody2d.velocity = new Vector2(randomDirection, 0) * cakeAttributes.HorizontalSpeed;
-    }
-
     public void Fall()
     {
         rigidbody2d.velocity = new Vector2(0, -1) * cakeAttributes.FallingSpeed;
         FallStarted?.Invoke(this);
     }
 
-    public void Stop()
+    public void StopRigidbodyConstrains()
     {
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezeAll;
     }
@@ -55,7 +55,7 @@ public class Cake : MonoBehaviour, ICollidable
         Destroy(GetComponent<PolygonCollider2D>());
     }
 
-    public void DestroyCake()
+    public void DestroyCakeAfterDelay()
     {
         CakeCollection.Cakes.Remove(this);
         Destroy(gameObject, cakeAttributes.IllegalFallDestroyDelay);

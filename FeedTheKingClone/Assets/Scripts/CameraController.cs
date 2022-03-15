@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float cakeFallMovementTime = .2f;
     [SerializeField] private float moveToKingTimeMultiplier = .3f;
     [SerializeField] private AnimationCurve curve;
+    private float moveToKingTimeInSeconds => moveToKingTimeMultiplier * CakeCollection.Cakes.CakeCount;
 
     private void OnEnable()
     {
@@ -20,17 +21,17 @@ public class CameraController : MonoBehaviour
         StopAllCoroutines();
         var futurePosition = king.transform.position;
         futurePosition.z = transform.position.z;
-        StartCoroutine(MoveCamera(futurePosition, moveToKingTimeMultiplier * CakeCollection.Cakes.CakeCount));
+        StartCoroutine(MoveCamera(futurePosition, moveToKingTimeInSeconds));
     }
 
     private void OnFallen(GameObject cake, GameObject ground)
     {
         StopAllCoroutines();
-        var futurePosition = TargetAfterCakeFall(cake);
+        var futurePosition = TargetPositionAfterCakeFall(cake);
         StartCoroutine(MoveCamera(futurePosition, cakeFallMovementTime));
     }
 
-    private Vector3 TargetAfterCakeFall(GameObject cake)
+    private Vector3 TargetPositionAfterCakeFall(GameObject cake)
     {
         ICollidable cakeICollidable = cake.GetComponent<ICollidable>();
         float cakeHeight = cakeICollidable.TopLeftCorner().transform.position.y - cakeICollidable.BottomLeftCorner().transform.position.y;
@@ -51,5 +52,11 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, target, normalized);
             yield return null;
         }
+    }
+
+        private void OnDisable()
+    {
+        Cake.Fallen -= OnFallen;
+        KingEatingState.KingStateEntered -= OnKingStateEntered;
     }
 }
