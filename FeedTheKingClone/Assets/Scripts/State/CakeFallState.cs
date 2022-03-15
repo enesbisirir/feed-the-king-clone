@@ -57,7 +57,7 @@ public class CakeFallState : BaseState
     private void OnFallIllegally(Cake cake)
     {
         cake.FreeFall();
-        cake.DestroyCake();
+        cake.DestroyCakeAfterDelay();
 
         var currentHealth = playerHealth.DecreaseHealth();
         
@@ -80,7 +80,7 @@ public class CakeFallState : BaseState
 
     private void OnFallen(GameObject fallingObject, GameObject stationaryObject)
     {
-        fallingObject.GetComponent<Cake>().Stop();
+        fallingObject.GetComponent<Cake>().StopRigidbodyConstrains();
         cakeSpawner.Spawn();
     }
 
