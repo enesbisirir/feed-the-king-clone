@@ -8,7 +8,17 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float cakeFallMovementTime = .2f;
     [SerializeField] private float moveToKingTimeMultiplier = .3f;
     [SerializeField] private AnimationCurve curve;
+
+    private ObjectContainer container;
+    private King king;
+
     private float moveToKingTimeInSeconds => moveToKingTimeMultiplier * CakeCollection.Cakes.CakeCount;
+
+    private void Start()
+    {
+        container = FindObjectOfType<ObjectContainer>();
+        king = container.GetComponent("King") as King;
+    }
 
     private void OnEnable()
     {
@@ -16,7 +26,7 @@ public class CameraController : MonoBehaviour
         KingEatingState.KingStateEntered += OnKingStateEntered;
     }
 
-    private void OnKingStateEntered(King king)
+    private void OnKingStateEntered()
     {
         StopAllCoroutines();
         var futurePosition = king.transform.position;
@@ -42,6 +52,8 @@ public class CameraController : MonoBehaviour
     private IEnumerator MoveCamera(Vector3 target, float movementTime)
     {
         float timePassed = 0f;
+        var startPosition = transform.position;
+
         while (movementTime > timePassed)
         {
             timePassed += Time.deltaTime;
@@ -49,9 +61,17 @@ public class CameraController : MonoBehaviour
             var normalized = timePassed / movementTime;
             normalized = curve.Evaluate(normalized);
 
-            transform.position = Vector3.Lerp(transform.position, target, normalized);
+            transform.position = Vector3.Lerp(startPosition, target, normalized);
             yield return null;
         }
+    }
+
+    public void FollowKing()
+    {
+        var target = transform.position;
+        target.y = king.transform.position.y;
+
+        transform.position = target;
     }
 
         private void OnDisable()

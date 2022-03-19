@@ -8,6 +8,7 @@ public class ObjectContainer : MonoBehaviour
     [SerializeField] private Tray tray;
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private King king;
+    [SerializeField] private CameraController cameraController;
 
     private PlayerHealth playerHealth;
 
@@ -23,7 +24,8 @@ public class ObjectContainer : MonoBehaviour
             { "Tray", tray },
             { "InputHandler", inputHandler },
             { "King", king },
-            { "PlayerHealth", playerHealth }
+            { "PlayerHealth", playerHealth },
+            { "CameraController", cameraController }
         };
     }
 

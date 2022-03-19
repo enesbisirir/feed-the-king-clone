@@ -8,15 +8,17 @@ public class KingEatingState : BaseState
     private King king;
     private InputHandler inputHandler;
     private bool isKingMoveStarted;
-    public static Action<King> KingStateEntered {get; internal set;}
+    private CameraController cameraController;
+    public static Action KingStateEntered {get; internal set;}
     public KingEatingState(ObjectContainer container)
     {
         king = container.GetComponent("King") as King;
         inputHandler = container.GetComponent("InputHandler") as InputHandler;
+        cameraController = container.GetComponent("CameraController") as CameraController;
     }
     protected override void OnEnter()
     {
-        KingStateEntered?.Invoke(king);
+        KingStateEntered?.Invoke();
         inputHandler.TouchStarted += OnTouchStarted;
     }
     protected override void OnUpdate()
@@ -25,6 +27,7 @@ public class KingEatingState : BaseState
         {
             king.FollowTouch();
             king.Escalate();
+            cameraController.FollowKing();
         }
     }
     protected override void OnExit()
