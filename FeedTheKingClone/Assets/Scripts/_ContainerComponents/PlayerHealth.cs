@@ -21,7 +21,6 @@ public class PlayerHealth
 
         if (health >= 0)
         {
-            Debug.Log($"Current health: {health}");
             HealthDecreased?.Invoke(health);
         }
         else 
