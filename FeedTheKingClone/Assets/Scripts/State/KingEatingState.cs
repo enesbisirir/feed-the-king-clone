@@ -22,7 +22,10 @@ public class KingEatingState : BaseState
     protected override void OnUpdate()
     {
         if (isKingMoveStarted)
+        {
             king.FollowTouch();
+            king.Escalate();
+        }
     }
     protected override void OnExit()
     {
