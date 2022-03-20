@@ -5,6 +5,19 @@ using UnityEngine;
 public class CakeSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] cakePrefabs;
+    
+    private ObjectContainer container;
+    private GameFieldCalculator gameFieldCalculator;
+
+    private float gameFieldEdgeX;
+
+    private void Start()
+    {
+        container = FindObjectOfType<ObjectContainer>();
+        gameFieldCalculator = container.GetComponent("GameFieldCalculator") as GameFieldCalculator;
+
+        gameFieldEdgeX = gameFieldCalculator.GameFieldEdgeX;
+    }
 
     public void Spawn()
     {
@@ -21,8 +34,8 @@ public class CakeSpawner : MonoBehaviour
 
     private void Reposition()
     {
-        float cakePosX = Random.Range(-GAME_FIELD_X + (MaxCakeWidth / 2) + MARGIN,
-                                       GAME_FIELD_X - (MaxCakeWidth / 2) - MARGIN);
+        float cakePosX = Random.Range(-gameFieldEdgeX + (MaxCakeWidth / 2) + MARGIN,
+                                       gameFieldEdgeX - (MaxCakeWidth / 2) - MARGIN);
 
         transform.position = new Vector3(cakePosX, transform.position.y, transform.position.z);
     }
@@ -45,7 +58,5 @@ public class CakeSpawner : MonoBehaviour
         }
     }
 
-
-    const float GAME_FIELD_X = 2.8f;
     const float MARGIN = .1f;
 }

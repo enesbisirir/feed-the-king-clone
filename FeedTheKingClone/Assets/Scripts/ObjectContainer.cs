@@ -12,12 +12,14 @@ public class ObjectContainer : MonoBehaviour
     [SerializeField] private HealthRenderer healthRenderer;
 
     private PlayerHealth playerHealth;
+    private GameFieldCalculator gameFieldCalculator;
 
     private Dictionary<string, object> components;
 
     private void Awake()
     {
         playerHealth = new PlayerHealth();
+        gameFieldCalculator = new GameFieldCalculator();
 
         components = new Dictionary<string, object>
         {
@@ -27,7 +29,8 @@ public class ObjectContainer : MonoBehaviour
             { "King", king },
             { "PlayerHealth", playerHealth },
             { "HealthRenderer", healthRenderer },
-            { "CameraController", cameraController }
+            { "CameraController", cameraController },
+            { "GameFieldCalculator", gameFieldCalculator }
         };
     }
 
