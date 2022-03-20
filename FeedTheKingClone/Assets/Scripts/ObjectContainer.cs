@@ -35,7 +35,7 @@ public class ObjectContainer : MonoBehaviour
     {
         if (!components.ContainsKey(componentKey))
         {
-            return null;
+            throw new System.Exception($"{componentKey} cannot be found in the ObjectContainer");
         }
 
         return components[componentKey];

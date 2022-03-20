@@ -8,7 +8,6 @@ public class PlayerHealth
     private int health;
 
     public Action<int> HealthDecreased {get; internal set;}
-    //public Action Dead {get; internal set;}
 
     public PlayerHealth()
     {
