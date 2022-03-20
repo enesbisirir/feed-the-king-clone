@@ -9,6 +9,7 @@ public class CakeFallState : BaseState
     private Tray tray;
     private InputHandler inputHandler;
     private PlayerHealth playerHealth;
+    private HealthRenderer healthRenderer;
     private Action<Cake> FallenIllegally {get; set;}
 
     public CakeFallState(ObjectContainer container)
@@ -17,11 +18,14 @@ public class CakeFallState : BaseState
         tray = container.GetComponent("Tray") as Tray;
         inputHandler = container.GetComponent("InputHandler") as InputHandler;
         playerHealth = container.GetComponent("PlayerHealth") as PlayerHealth;
+        healthRenderer = container.GetComponent("HealthRenderer") as HealthRenderer;
     }
 
     protected override void OnEnter()
     {
         Debug.Log("Cake Fall State Started");
+
+        healthRenderer.ShowHearts();
 
         Cake.FallStarted += OnFallStarted;
         Cake.Fallen += OnFallen;
