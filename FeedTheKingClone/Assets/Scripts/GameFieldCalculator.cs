@@ -11,7 +11,6 @@ public class GameFieldCalculator
         get
         {
             Vector3 topRightCorner = camera.ViewportToWorldPoint(new Vector3(1, 1, camera.nearClipPlane));
-            Debug.Log(topRightCorner.x);
             return topRightCorner.x;
         }
     }
