@@ -10,6 +10,7 @@ public class StateFactory
         {
             GameState.CakeFallState => new CakeFallState(container),
             GameState.KingEatingState => new KingEatingState(container),
+            GameState.KingWaitingToEatState => new KingWaitingToEatState(container),
             _ => null,
         };
     }

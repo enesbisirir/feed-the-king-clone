@@ -21,6 +21,8 @@ public class CakeFallState : BaseState
 
     protected override void OnEnter()
     {
+        Debug.Log("Cake Fall State Started");
+
         Cake.FallStarted += OnFallStarted;
         Cake.Fallen += OnFallen;
         inputHandler.TouchStarted += OnTouchStarted;

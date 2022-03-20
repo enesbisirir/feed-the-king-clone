@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float moveToKingTimeMultiplier = .3f;
     [SerializeField] private AnimationCurve curve;
 
+    public Action CameraMovedToKing { get; internal set; }
+
     private ObjectContainer container;
     private King king;
 
@@ -23,10 +25,9 @@ public class CameraController : MonoBehaviour
     private void OnEnable()
     {
         Cake.Fallen += OnFallen;
-        KingEatingState.KingStateEntered += OnKingStateEntered;
     }
 
-    private void OnKingStateEntered()
+    public void MoveCameraToKing()
     {
         StopAllCoroutines();
         var futurePosition = king.transform.position;
@@ -64,6 +65,7 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, target, normalized);
             yield return null;
         }
+        CameraMovedToKing?.Invoke();
     }
 
     public void FollowKing()
@@ -74,9 +76,8 @@ public class CameraController : MonoBehaviour
         transform.position = target;
     }
 
-        private void OnDisable()
+    private void OnDisable()
     {
         Cake.Fallen -= OnFallen;
-        KingEatingState.KingStateEntered -= OnKingStateEntered;
     }
 }

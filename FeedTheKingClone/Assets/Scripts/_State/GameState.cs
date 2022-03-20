@@ -5,5 +5,6 @@ using UnityEngine;
 public enum GameState
 {
     CakeFallState,
+    KingWaitingToEatState,
     KingEatingState
 }
