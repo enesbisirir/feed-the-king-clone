@@ -7,15 +7,17 @@ public class King : MonoBehaviour
     [SerializeField] private float followTouchSpeed = 1f;
     [SerializeField] private float escalationSpeed = 1f;
     private Rigidbody2D rigidbody2d;
+    private Camera _camera;
 
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        _camera = Camera.main;
     }
 
     public void FollowTouch()
     {
-        var touchPos = Camera.main.ScreenToWorldPoint(InputHandler.TouchPosition);
+        var touchPos = _camera.ScreenToWorldPoint(InputHandler.TouchPosition);
         touchPos.y = transform.position.y;
 
         transform.position = Vector2.Lerp(transform.position, touchPos, Time.deltaTime * followTouchSpeed);
