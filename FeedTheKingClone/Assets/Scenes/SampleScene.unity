@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469cd6cf8349fa647b36ee7ab7d371ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followTouchSpeed: 1
+  followTouchSpeed: 5
   escalationSpeed: 5
 --- !u!50 &1908834340
 Rigidbody2D:
