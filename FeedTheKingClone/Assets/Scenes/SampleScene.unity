@@ -587,7 +587,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6162714649653463849, guid: 29bd5836b5b190a409de571b08711049, type: 3}
       propertyPath: m_Name
-      value: Heart_IMG (2)
+      value: Heart 2
       objectReference: {fileID: 0}
     - target: {fileID: 6162714649653463849, guid: 29bd5836b5b190a409de571b08711049, type: 3}
       propertyPath: m_IsActive
@@ -689,7 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 818641428}
   m_Layer: 5
-  m_Name: Heart_IMGs
+  m_Name: Hearts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -951,7 +951,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6162714649653463849, guid: 29bd5836b5b190a409de571b08711049, type: 3}
       propertyPath: m_Name
-      value: Heart_IMG (1)
+      value: Heart 1
       objectReference: {fileID: 0}
     - target: {fileID: 6162714649653463849, guid: 29bd5836b5b190a409de571b08711049, type: 3}
       propertyPath: m_IsActive
@@ -1171,7 +1171,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6162714649653463849, guid: 29bd5836b5b190a409de571b08711049, type: 3}
       propertyPath: m_Name
-      value: Heart_IMG
+      value: Heart 0
       objectReference: {fileID: 0}
     - target: {fileID: 6162714649653463849, guid: 29bd5836b5b190a409de571b08711049, type: 3}
       propertyPath: m_IsActive
